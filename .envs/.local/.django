@@ -3,4 +3,6 @@
 USE_DOCKER=yes
 IPYTHONDIR=/app/.ipython
 
-DJANGO_ALLOWED_HOSTS=.tzurcaprovertest.com
+DJANGO_ALLOWED_HOSTS=*
+
+DEBUG=True

@@ -31,7 +31,7 @@ if READ_DOT_ENV_FILE:
 SECRET_KEY = 'django-insecure-!+pvj#1q&*1jpmg0=hozz!hazp6t^fe&qo&d)q!yz0omwrqyhr'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = env('DEBUG')
 
 # ALLOWED_HOSTS = env.list("DJANGO_ALLOWED_HOSTS", default=["localhost", "0.0.0.0", "127.0.0.1"])
 ALLOWED_HOSTS = env.list("DJANGO_ALLOWED_HOSTS")
@@ -55,7 +55,13 @@ THIRD_PARTY_APPS = [
     "allauth.socialaccount",
 ]
 
+LOCAL_APP = [
+    'leads',
+]
+
 INSTALLED_APPS += THIRD_PARTY_APPS
+INSTALLED_APPS += LOCAL_APP
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -74,7 +80,7 @@ ROOT_URLCONF = 'core.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
